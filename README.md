@@ -4,6 +4,13 @@ Various converters for encoding BIP-39 seeds in a compact storage form or for de
 ## Description:
 This document describes how to manually convert a BIP-39 SEED phrase into several compact storage formats.
 
+## Advantages of using the HEX hash and the associated rules:
+- 66 characters require less space to be stored than 24 words from the BIP-39 list
+- The HEX hash and the encoding/decoding rules must be stored in different locations and together they form a 2-factor backup system.
+- The hash is stored in multiple copies by the crypto holder (testator) and the heir of these crypto assets, and the rules are stored only by the crypto holder (testator) and the custodian of the will (notary/attorney).
+- This ensures that the heir receives the second part (the Rules) for restoring the SEED after the death of the testator.
+- The testator can rely on the notary or attorney to fulfill their mandate. And the notary/attorney doesn't know the HEX hash to restore the SEED without the heir's knowledge.
+
 ## Encoding a 12 or 24 word seed phrase to a 66 character hex hash.
 1. Identify the index (0-2047) of each word in the BIP-39 list.
 2. Apply Rule 1: Swap the order of the indexes (Remember each swap. E.g.: "Swap the current index of word 1 with the index of word 7.")
@@ -93,10 +100,36 @@ Seed:
 	Word 21: Swap the current index of the word 21 with the index of the word 19.	(already applied)
 	Word 22: Swap the current index of the word 22 with the index of the word 5.	(already applied)
 	Word 23: Swap the current index of the word 23 with the index of the word 2.	(already applied)
-	Word 24: Swap the current index of the word 24 with the index of the word 18.	(already applied)
-
-	=> New order of the index: 6, 22, 3, 2, 21, 15, 0, 19, 13, 11, 14, 9, 16, 8, 10, 5, 12, 23, 20, 7, 18, 4, 1, 17
+	Word 24: Swap the current index of the word 24 with the index of the word 18.	(already applied)	
 ```
+=> New order of the index:
+```
+	6
+	22
+	3
+	2
+	21
+	15
+	0
+	19
+	13
+	11
+	14
+	9
+	16
+	8
+	10
+	5
+	12
+	23
+	20
+	7
+	18
+	4
+	1
+	17
+```
+
 3. Application of Rule 2 (Example):
 ```
 	Word 1:	Take the index of the word that is 1 ranks after the current index.
@@ -122,10 +155,36 @@ Seed:
 	Word 21: Take the index of the word that is 21 ranks after the current index.
 	Word 22: Take the index of the word that is 22 ranks after the current index.
 	Word 23: Take the index of the word that is 23 ranks after the current index.
-	Word 24: Take the index of the word that is 2047 ranks after the current index.
-
-	=> New order of the index: 7, 24, 6, 6, 26, 21, 7, 27, 22, 21, 25, 21, 29, 22, 25, 21, 29, 41, 39, 27, 39, 26, 24, 16
+	Word 24: Take the index of the word that is 2047 ranks after the current index.	
 ```
+=> New order of the index:
+```
+	7
+	24
+	6
+	6
+	26
+	21
+	7
+	27
+	22
+	21
+	25
+	21
+	29
+	22
+	25
+	21
+	29
+	41
+	39
+	27
+	39
+	26
+	24
+	16
+```
+
 4. Convert each decimal number of the index from step 3 into an 11-bit binary number (see BIP-39 list):
 ```
 	00000000111
@@ -153,6 +212,7 @@ Seed:
 	00000011000
 	00000010000
 ```
+
 5. Sequence of all 11-bit binary numbers:
 ```
 000000001110000001100000000000110000000001100000001101000000010101000000001110000001101100000010110000000101010000001100100000010101000000111010000001011000000011001000000101010000001110100000101001000001001110000001101100000100111000000110100000001100000000010000
@@ -193,9 +253,9 @@ Seed:
 	10000000
 	11000000
 	00010000
-	
-	(with a 24 SEED there are 33x 8-bit binary numbers)
 ```
+With a 24 SEED there are 33x 8-bit binary numbers.
+
 
 7. Converting each 8-bit binary number into a hexadecimal number and concatenating them:
 ```
@@ -292,7 +352,8 @@ HEX hash: D2E060030060340540381B02C0540C81503A0580C81503A0A41381B04E0680C010
 ```
 	
 3. Sequence of 8-bit binary numbers:
-``` 110100101110000001100000000000110000000001100000001101000000010101000000001110000001101100000010110000000101010000001100100000010101000000111010000001011000000011001000000101010000001110100000101001000001001110000001101100000100111000000110100000001100000000010000
+```
+000000001110000001100000000000110000000001100000001101000000010101000000001110000001101100000010110000000101010000001100100000010101000000111010000001011000000011001000000101010000001110100000101001000001001110000001101100000100111000000110100000001100000000010000
 ```
 
 4. Division of the sequence of 8-bit binary numbers into 11-bit binary number groups:
@@ -377,9 +438,35 @@ HEX hash: D2E060030060340540381B02C0540C81503A0580C81503A0A41381B04E0680C010
 	Word 22: Take the index of the word that is 22 ranks before the current index.
 	Word 23: Take the index of the word that is 23 ranks before the current index.
 	Word 24: Take the index of the word that is 2047 ranks before the current index.
-	
-	=> New order of the index: 6, 22, 3, 2, 21, 15, 0, 19, 13, 11, 14, 9, 16, 8, 10, 5, 12, 23, 20, 7, 18, 4, 1, 17
 ```
+New order of the index:
+```
+	6
+	22
+	3
+	2
+	21
+	15
+	0
+	19
+	13
+	11
+	14
+	9
+	16
+	8
+	10
+	5
+	12
+	23
+	20
+	7
+	18
+	4
+	1
+	17
+```
+
 7. Application of Rule 1 in the reverse sense (example):
 ```
 	Swap the current index of the word 1 with the index of the word 7.
@@ -406,9 +493,35 @@ HEX hash: D2E060030060340540381B02C0540C81503A0580C81503A0A41381B04E0680C010
 	Swap the current index of the word 22 with the index of the word 5.	(already applied)
 	Swap the current index of the word 23 with the index of the word 2.	(already applied)
 	Swap the current index of the word 24 with the index of the word 18.	(already applied)
-	
-	=> New order of the index: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
 ```
+=> New order of the index:
+```	
+ 	0
+	1
+	2
+	3
+	4
+	5
+	6
+	7
+	8
+	9
+	10
+	11
+	12
+	13
+	14
+	15
+	16
+	17
+	18
+	19
+	20
+	21
+	22
+	23
+```
+
 8. Determination of the words for each index (SEED):
 ```
 	abandon
