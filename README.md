@@ -10,6 +10,7 @@ This document describes how to manually convert a BIP-39 SEED phrase into severa
 - The hash is stored in multiple copies by the crypto holder (testator) and the heir of these crypto assets, and the rules are stored only by the crypto holder (testator) and the custodian of the will (notary/attorney).
 - This ensures that the heir receives the second part (the Rules) for restoring the SEED after the death of the testator.
 - The testator can rely on the notary or attorney to fulfill their mandate. And the notary/attorney doesn't know the HEX hash to restore the SEED without the heir's knowledge.
+- You can use the BIP-39_seed_converter.ods file on an offline system to generate a backup hash in seconds or to restore the SEED using the HEX hash and the ruleset.
 
 ## Encoding a 12 or 24 word seed phrase to a 66 character hex hash.
 1. Identify the index (0-2047) of each word in the BIP-39 list.
