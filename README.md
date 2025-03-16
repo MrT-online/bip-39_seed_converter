@@ -1,10 +1,10 @@
 # BIP-39_Seed_Converter
 Various converters for encoding BIP-39 seeds in a compact storage form or for decoding.
 
-##Description:
+## Description:
 This document describes how to manually convert a BIP-39 SEED phrase into several compact storage formats.
 
-##Encoding a 12 or 24 word seed phrase to a 66 character hex hash.
+## Encoding a 12 or 24 word seed phrase to a 66 character hex hash.
 1. Identify the index (0-2047) of each word in the BIP-39 list.
 2. Apply Rule 1: Swap the order of the indexes (Remember each swap. E.g.: "Swap the current index of word 1 with the index of word 7.")
 3. Apply Rule 2: Note an index offset for each index in the BIP-39 list. E.g.: "Word 1: Take the index of the word that is 1 rank after the current index."
@@ -14,7 +14,7 @@ This document describes how to manually convert a BIP-39 SEED phrase into severa
 6. Divide the resulting binary string into 8-bit groups.
 7. Convert each 8-bit group to a hexadecimal value.
 
-###Example
+### Example
 Seed:
 	abandon
 	ability
@@ -172,7 +172,7 @@ Seed:
 Congratulation you have determined the 66 characters for your seed phrase!
 
 	
-##Decoding a HEX hash into a 12 or 24 word SEED phrase.
+## Decoding a HEX hash into a 12 or 24 word SEED phrase.
 1. Convert each hexadecimal value to an 8-bit binary number.
 2. String all 8-bit binary numbers together.
 3. Divide the binary string into 11-bit groups.
@@ -181,7 +181,7 @@ Congratulation you have determined the 66 characters for your seed phrase!
 6. Apply rule 1 only once for each word.
 7. Determine the corresponding word in the BIP-39 list for each index.
 
-###Example:
+### Example:
 HEX hash: D2E060030060340540381B02C0540C81503A0580C81503A0A41381B04E0680C010
 
 1. Dividing the HEX hash into groups of 2:
@@ -394,8 +394,8 @@ HEX hash: D2E060030060340540381B02C0540C81503A0580C81503A0A41381B04E0680C010
 Congratulation you have successfully decoded your SEED phrase from your HEX hash!
 
 
-##Econding a 12 or 24 word SEED phrase into a 44 characters Base64 hash.
+## Econding a 12 or 24 word SEED phrase into a 44 characters Base64 hash.
 	comin soon...
 
-##Decoding a Base64 hash into a 12 or 24 word SEED phrase.
+## Decoding a Base64 hash into a 12 or 24 word SEED phrase.
 	comin soon...
