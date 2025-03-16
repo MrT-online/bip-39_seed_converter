@@ -1,5 +1,0 @@
-MD5 hash				File
-------------------------------------------------------------
-26cd82042a88455517d31a21f1c20e37 	BIP-39_seed_converter.ods
-421129471c3f6153d9b6587aebb1ab02	LICENSE
-a2378472d6c57f6197e8390071eeebf8	README.md
