@@ -276,7 +276,7 @@ Congratulation you have determined the 66 characters for your seed phrase!
 7. Determine the corresponding word in the BIP-39 list for each index.
 
 ### Example:
-HEX hash: D2E060030060340540381B02C0540C81503A0580C81503A0A41381B04E0680C010
+Assuming you have saved (punched) this HEX hash value: D2E060030060340540381B02C0540C81503A0580C81503A0A41381B04E0680C010
 
 1. Dividing the HEX hash into groups of 2:
 ```
