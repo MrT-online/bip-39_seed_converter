@@ -16,7 +16,7 @@ This document describes how to manually convert a BIP-39 SEED phrase into severa
 
 ### Example
 Seed:
-	abandon
+```	abandon
 	ability
 	able
 	about
@@ -40,11 +40,12 @@ Seed:
 	actor
 	actress
 	actual
-
+```
 1. Determining the respective index of each word in the BIP-39 list:
 	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
 	
 2. Application of Rule 1 (Example):
+```
 	Word 1:	Swap the current index of the word 1 with the index of the word 7.
 	Word 2:	Swap the current index of the word 2 with the index of the word 23.
 	Word 3:	Swap the current index of the word 3 with the index of the word 4.
@@ -71,8 +72,9 @@ Seed:
 	Word 24: Swap the current index of the word 24 with the index of the word 18.	(already applied)
 
 	=> New order of the index: 6, 22, 3, 2, 21, 15, 0, 19, 13, 11, 14, 9, 16, 8, 10, 5, 12, 23, 20, 7, 18, 4, 1, 17
-
-3. Application of Rule 2 (Example):
+```
+4. Application of Rule 2 (Example):
+```
 	Word 1:	Take the index of the word that is 1 ranks after the current index.
 	Word 2:	Take the index of the word that is 2 ranks after the current index.
 	Word 3:	Take the index of the word that is 3 ranks after the current index.
@@ -99,9 +101,9 @@ Seed:
 	Word 24: Take the index of the word that is 2047 ranks after the current index.
 
 	=> New order of the index: 7, 24, 6, 6, 26, 21, 7, 27, 22, 21, 25, 21, 29, 22, 25, 21, 29, 41, 39, 27, 39, 26, 24, 16
-	
-4. Convert each decimal number of the index from step 3 into an 11-bit binary number (see BIP-39 list) 
-	00000000111
+```
+6. Convert each decimal number of the index from step 3 into an 11-bit binary number (see BIP-39 list):
+```	00000000111
 	00000011000
 	00000000110
 	00000000110
@@ -125,12 +127,12 @@ Seed:
 	00000011010
 	00000011000
 	00000010000
-
+```
 3. Sequence of all 11-bit binary numbers:
 000000001110000001100000000000110000000001100000001101000000010101000000001110000001101100000010110000000101010000001100100000010101000000111010000001011000000011001000000101010000001110100000101001000001001110000001101100000100111000000110100000001100000000010000
 
 4. Division of the consecutive 11-bit binary number into 8-bit number groups:
-	00000000
+```	00000000
 	11100000
 	01100000
 	00000011
@@ -165,9 +167,10 @@ Seed:
 	00010000
 	
 	(with a 24 SEED there are 33x 8-bit binary numbers)
+```
 
-5. Converting each 8-bit binary number into a hexadecimal number and concatenating them:
-	D2E060030060340540381B02C0540C81503A0580C81503A0A41381B04E0680C010
+6. Converting each 8-bit binary number into a hexadecimal number and concatenating them:
+```	D2E060030060340540381B02C0540C81503A0580C81503A0A41381B04E0680C010```
 
 Congratulation you have determined the 66 characters for your seed phrase!
 
