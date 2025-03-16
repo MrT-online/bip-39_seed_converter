@@ -22,7 +22,7 @@ This document describes how to manually convert a BIP-39 SEED phrase into severa
 7. Convert each 8-bit group to a hexadecimal value.
 
 ### Example
-Seed:
+Seed with 24 words:
 ```	abandon
 	ability
 	able
