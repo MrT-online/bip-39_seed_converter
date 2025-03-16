@@ -12,7 +12,7 @@ This document describes how to manually convert a BIP-39 SEED phrase into severa
 - The testator can rely on the notary or attorney to fulfill their mandate. And the notary/attorney doesn't know the HEX hash to restore the SEED without the heir's knowledge.
 - You can use the BIP-39_seed_converter.ods file on an offline system to generate a backup hash in seconds or to restore the SEED using the HEX hash and the ruleset.
 
-## Encoding a 12 or 24 word seed phrase to a 66 character hex hash.
+## Encoding a 24 (or 12) word seed phrase to a 66 (or 33) character hex hash.
 1. Identify the index (0-2047) of each word in the BIP-39 list.
 2. Apply Rule 1: Swap the order of the indexes (Remember each swap. E.g.: "Swap the current index of word 1 with the index of word 7.")
 3. Apply Rule 2: Note an index offset for each index in the BIP-39 list. E.g.: "Word 1: Take the index of the word that is 1 rank after the current index."
